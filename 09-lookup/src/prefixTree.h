@@ -3,7 +3,6 @@
 #include<iostream>
 #include<fstream>
 #include<cstdio>
-#include<cstdio>
 #include<string>
 #include<cstdlib>
 #include<ctime>
