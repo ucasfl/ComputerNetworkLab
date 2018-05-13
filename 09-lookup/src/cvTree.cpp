@@ -53,10 +53,18 @@ Leaf *CVTree::Search(u32 IP){
 		tmpIP <<= 2;
 		loc = (tmpIP & 0xc0000000) >> 30;
 	}
-	if (pos->LeafVec[loc-pos->Count(loc)].SubNet != IP){
-		Leaf *leaf = new Leaf();
-		return leaf;
+	u32 subnet = pos->LeafVec[loc-pos->Count(loc)].SubNet;
+	u8 prelen = pos->LeafVec[loc-pos->Count(loc)].PreLen;
+	for(u8 i = 1; i != prelen + 1; ++i){
+		if (subnet >> (32 -i) != IP >> (32 -i)){
+			Leaf *leaf = new Leaf();
+			return leaf;
+		}
 	}
+#if 0
+	if (pos->LeafVec[loc-pos->Count(loc)].SubNet != IP){
+	}
+#endif
 	return &pos->LeafVec[loc - pos->Count(loc) ];
 }
 
