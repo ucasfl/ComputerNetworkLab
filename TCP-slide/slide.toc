@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{传输实验一：连接管理与socket实现}{3}{0}{1}
+\beamer@sectionintoc {2}{传输实验二：数据收发}{14}{0}{2}
+\beamer@sectionintoc {3}{传输实验三：可靠传输}{18}{0}{3}

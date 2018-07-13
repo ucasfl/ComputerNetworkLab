@@ -1,0 +1,11 @@
+\frametitle{收到不连续数据}
+如果收到不连续数据：$cb->seq > tsk->rcv\_nxt$，则将数据包存到$ofo\_buffer$中：
+\begin{lstlisting}
+struct ofo_packet *buf_pac = (struct ofo_packet *)
+     malloc(sizeof(struct ofo_packet));
+buf_pac->packet = (char *)malloc(cb->pl_len);
+buf_pac->len = cb->pl_len;
+buf_pac->seq_num = cb->seq;
+memcpy(buf_pac->packet, cb->payload, cb->pl_len);
+list_add_tail(&buf_pac->list, tsk->rcv_ofo_buf);
+\end{lstlisting}
